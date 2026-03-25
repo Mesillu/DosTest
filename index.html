@@ -3,61 +3,77 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>HTTP Analytics Dashboard</title>
+  <title>DosPordos</title>
 
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
   <!-- CSS -->
   <link rel="stylesheet" href="style.css">
 
-  <!-- Chart.js -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <!-- Vercel Analytics (optional fallback for non-module environments) -->
+  <script defer src="https://cdn.jsdelivr.net/npm/@vercel/analytics/dist/analytics.min.js"></script>
 </head>
 <body>
-
-<div class="app">
-  <header class="header">
-    <div class="title">
-      <h1>HTTP Analytics</h1>
-      <span class="status live">Live</span>
-    </div>
-    <div class="controls">
-      <button id="export" class="btn">Export Logs</button>
-      <button id="clear" class="btn ghost">Clear Logs</button>
-    </div>
+  <header>
+    <h1>HTTP Flood Dashboard</h1>
   </header>
 
-  <section class="metrics">
-    <div class="card"><span>Total Requests</span><h2 id="total">0</h2></div>
-    <div class="card"><span>Requests / Second</span><h2 id="rps">0</h2></div>
-    <div class="card"><span>Requests / Minute</span><h2 id="rpm">0</h2></div>
-    <div class="card"><span>Data (MB)</span><h2 id="data">0</h2></div>
-    <div class="card"><span>Error %</span><h2 id="error">0%</h2></div>
-    <div class="card"><span>Active Visitors</span><h2 id="conn">0</h2></div>
-  </section>
+  <main>
+    <section class="metrics-grid">
+      <div class="metric-card">
+        <i class="fas fa-network-wired"></i>
+        <h2 id="activeConnections">0</h2>
+        <p>Active Connections</p>
+      </div>
+      <div class="metric-card">
+        <i class="fas fa-clock"></i>
+        <h2 id="rpm">0</h2>
+        <p>Requests / Minute</p>
+      </div>
+      <div class="metric-card">
+        <i class="fas fa-bolt"></i>
+        <h2 id="rps">0</h2>
+        <p>Requests / Second</p>
+      </div>
+      <div class="metric-card">
+        <i class="fas fa-database"></i>
+        <h2 id="dataReceived">0 MB</h2>
+        <p>Data Received</p>
+      </div>
+      <div class="metric-card">
+        <i class="fas fa-tachometer-alt"></i>
+        <h2 id="latency">0 ms</h2>
+        <p>Average Latency</p>
+      </div>
+      <div class="metric-card">
+        <i class="fas fa-exclamation-triangle"></i>
+        <h2 id="errorRate">0%</h2>
+        <p>Error Rate</p>
+      </div>
+    </section>
 
-  <section class="charts">
-    <div class="chart-card">
-      <div class="chart-title">Requests / Minute</div>
-      <canvas id="rpmChart"></canvas>
-    </div>
-    <div class="chart-card">
-      <div class="chart-title">Requests / Second</div>
-      <canvas id="rpsChart"></canvas>
-    </div>
-    <div class="chart-card">
-      <div class="chart-title">Response Time (ms)</div>
-      <canvas id="latencyChart"></canvas>
-    </div>
-  </section>
+    <section class="charts-grid">
+      <div class="chart-container">
+        <canvas id="rpmChart"></canvas>
+      </div>
+      <div class="chart-container">
+        <canvas id="rpsChart"></canvas>
+      </div>
+      <div class="chart-container">
+        <canvas id="latencyChart"></canvas>
+      </div>
+    </section>
+  </main>
 
-  <section class="logs">
-    <div class="log-header"><h3>Live Requests</h3></div>
-    <div id="log"></div>
-  </section>
-</div>
+  <footer>
+    <p>&copy; 2026 HTTP Flood Dashboard</p>
+  </footer>
 
-<script type="module" src="script.js"></script>
+  <!-- JS -->
+  <script type="module" src="script.js"></script>
 </body>
-</html>
+          </html>
