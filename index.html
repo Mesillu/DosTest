@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HTTP Analytics Dashboard</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+<div class="app">
+  <header class="header">
+    <div class="title">
+      <h1>HTTP Analytics</h1>
+      <span class="status live">Live</span>
+    </div>
+    <div class="controls">
+      <button id="export" class="btn">Export Logs</button>
+      <button id="clear" class="btn ghost">Clear Logs</button>
+    </div>
+  </header>
+
+  <section class="metrics">
+    <div class="card"><span>Total Requests</span><h2 id="total">0</h2></div>
+    <div class="card"><span>Requests / Second</span><h2 id="rps">0</h2></div>
+    <div class="card"><span>Requests / Minute</span><h2 id="rpm">0</h2></div>
+    <div class="card"><span>Data (MB)</span><h2 id="data">0</h2></div>
+    <div class="card"><span>Error %</span><h2 id="error">0%</h2></div>
+    <div class="card"><span>Active Visitors</span><h2 id="conn">0</h2></div>
+  </section>
+
+  <section class="charts">
+    <div class="chart-card">
+      <div class="chart-title">Requests / Minute</div>
+      <canvas id="rpmChart"></canvas>
+    </div>
+    <div class="chart-card">
+      <div class="chart-title">Requests / Second</div>
+      <canvas id="rpsChart"></canvas>
+    </div>
+    <div class="chart-card">
+      <div class="chart-title">Response Time (ms)</div>
+      <canvas id="latencyChart"></canvas>
+    </div>
+  </section>
+
+  <section class="logs">
+    <div class="log-header"><h3>Live Requests</h3></div>
+    <div id="log"></div>
+  </section>
+</div>
+
+<script type="module" src="script.js"></script>
+</body>
+</html>
